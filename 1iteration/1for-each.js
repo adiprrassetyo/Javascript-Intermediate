@@ -48,3 +48,46 @@
   //   "Ayam"
   // "Buaya"
 }
+
+{
+  let input = [100, 50, 60, 10];
+  let output = [];
+
+  input.forEach((item) => {
+    output.push(item / 10);
+  });
+
+  console.log(output);
+  // Output [10, 5, 6, 1]
+  // dapat di permudah menggunakan map yaitu membuat array baru
+}
+
+{
+  let arrAngka = [1, 2, 3, 4, 5];
+  let hasil = 0;
+
+  arrAngka.forEach((value) => {
+    hasil += value;
+  });
+
+  console.log(hasil);
+  // Output: 15
+  // dapat dipermudah menggunakan reduce
+}
+
+{
+  let arrBuah = ["Jeruk", "Apel", "Semangka", "Apel"];
+  let indexApel = 0;
+
+  arrBuah.forEach((item, index) => {
+    if (item == "Apel") {
+      indexApel = index;
+    }
+  });
+
+  console.log(indexApel);
+  // Output: 3
+  //dapat dipermudah menggunakan indexof
+
+  // Kode di atas terdapat 2 elemen string Apel pada index ke-1 dan index ke-3. Hasil nomor index yang didapatkan adalah 3, tidak sesuai dengan yang kita harapkan. Ini terjadi karena .forEach() akan melakukan iterasi pada seluruh data. Akibatnya yang kita dapatkan adalah nomor index dari buah Apel yang terakhir.
+}
