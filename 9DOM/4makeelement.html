@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       **Tapi, membuat elemen saja tidak cukup. Elemen yang sudah dibuat belum ada isinya. Maka dari itu kamu dapat menggunakan built-in method lainnya seperti createTextNode(), createAttribute(), dan setAttribute() untuk membuat elemen yang utuh.
+       *!remove() untuk delete
+       */
+
+      {
+        var judul = document.createElement("h1");
+        judul.textContent = "Belajar Javascript";
+        document.body.append(judul);
+      }
+
+      {
+        //Kita akan membuat file bernama elemen.js. Kita tentukan dahulu parent dari elemen HTML yang akan kita buat. Pada kasus ini kita sudah mempunyai elemen <body> sebagai parent. Maka pada file elemen.js kita akan menambahkan kode berikut ini:
+        let body = document.body;
+        // Kita akan membuat elemen baru yaitu elemen heading <h1> menggunakan method createElement("NAMA_ELEMEN"). Kita akan menambahkan kode berikut ini di bawah kode yang telah dibuat sebelumnya:
+        let heading = document.createElement("h2");
+        console.log(heading);
+        // Kita akan memasukkan elemen <h1> di dalam elemen <body> menggunakan method appendChild("NODE") yang membutuhkan parameter berupa node object dari elemen atau konten teks yang telah dibuat.
+        // Memasukkan elemen <h1> kedalam elemen <body>
+        body.appendChild(heading);
+        // Kita dapat menambahkan attribute setiap elemen HTML. Kita akan menambahkan attribute id dengan menggunakan method createAttribute(). Lalu isi attribute tersebut dengan nilai "mainHeading" ke dalam property value. Setelah itu daftarkan attribute tersebut kepada elemen heading menggunakan method setAttributeNode("ATTRIBUTE_NAME").
+        // Membuat attribut
+        let id = document.createAttribute("id");
+        // Memasukkan nilai attribut
+        id.value = "mainHeading";
+        // Set attribute pada <h2>
+        heading.setAttributeNode(id);
+
+        // Kita akan membuat konten utama berupa teks "Ini Heading" menggunakan method createTextNode("TEKS") yang membutuhkan parameter berupa teks yang akan dimasukkan kedalam elemen HTML.
+        // Lalu konten teks tersebut akan kita masukkan pada elemen <h1> menggunakan method appendChild("NODE") yang membutuhkan parameter berupa node object dari elemen atau konten teks yang telah dibuat:
+        // Membuat konten pada elemen
+        let contentHeading = document.createTextNode("Ini heading");
+        // Memasukkan konten yang telah dibuat kedalam elemen heading <h1>
+        heading.appendChild(contentHeading);
+      }
+    </script>
+  </body>
+</html>
