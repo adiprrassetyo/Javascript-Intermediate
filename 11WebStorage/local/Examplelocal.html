@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: row;
+      }
+
+      form input {
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input
+        type="text"
+        id="searchkey"
+        name="searchkey"
+        placeholder="Search Something"
+      /><br />
+      <input type="submit" value="Search" onclick="onSearch()" />
+    </form>
+    <h4>Riwayat Pencarian</h4>
+    <div id="search-history"></div>
+    <button onclick="clearSearchHistory()" style="margin-top: 20px">
+      Hapus Riwayat
+    </button>
+    <script>
+      var searchList = JSON.parse(localStorage.getItem("searchKey")) || []; // jika searchKey bernilai undefined, maka set searchList sebagai empty array
+      function onSearch() {
+        var searchValue = document.getElementById("searchkey").value;
+        searchList.push(searchValue); // memasukan kata pencarian ke dalam array
+
+        var searchListString = JSON.stringify(searchList); // mengubah array menjadi string
+        localStorage.setItem("searchKey", searchListString); // menyimpan pencarian dengan key 'searchKey'
+      }
+
+      function getSearchHistory() {
+        var list = "";
+        for (var i = 0; i < searchList.length; i++) {
+          list += `<div>${searchList[i]}</div>`;
+        }
+        document.getElementById("search-history").innerHTML = list;
+      }
+
+      // memanggil fungsi getSearchHistory
+      if (searchList.length > 0) {
+        // Jika panjang array searchList > 0
+        getSearchHistory(); // panggil fungsi getSearchHistory
+      }
+
+      function clearSearchHistory() {
+        localStorage.removeItem("searchKey"); // menghapus data pada localStorage dengan key "searchKey"
+        document.getElementById("search-history").innerHTML = ""; // mengosongkan riwayat pencarian
+      }
+    </script>
+  </body>
+</html>

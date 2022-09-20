@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background: white;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      #list-cart {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        border-bottom: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="width: 50%">
+      <div class="row">
+        <div>Name</div>
+        <div>Quantity</div>
+      </div>
+      <div id="list-cart"></div>
+    </div>
+
+    <script>
+      var cartList = JSON.parse(sessionStorage.getItem("carts")); // mengambil data dari session storage, di parsing kembali dari string menjadi array object
+
+      // merender name dan qty dari cart
+      var list = "";
+      for (var i = 0; i < cartList.length; i++) {
+        list += `<div class="row">
+        <div id="name">${cartList[i].name}</div>
+        <div id="qty">${cartList[i].qty}</div>
+    </div>`;
+      }
+      document.getElementById("list-cart").innerHTML = list;
+      // Perlu diketahui, JSON.parse() berfungsi mengembalikan tipe data string yang kita dapat dari session storage kembali menjadi JSON. Lalu untuk merender data dari session storage, kita menggunakan innerHTML, dimana innerHTML menerima string berisikan tag HTML.
+    </script>
+  </body>
+</html>
