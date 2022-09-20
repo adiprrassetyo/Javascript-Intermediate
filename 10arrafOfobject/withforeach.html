@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="1" cellspacing="0" cellpadding="5">
+      <thead>
+        <th>Brand</th>
+        <th>Type</th>
+        <th>Year</th>
+        <th>Color</th>
+      </thead>
+      <tbody id="my-body-table"></tbody>
+    </table>
+    <script>
+      const cars = [
+        {
+          brand: "Citroen",
+          type: "Second",
+          year: "2000",
+          color: "White",
+        },
+        {
+          brand: "Peugeot",
+          type: "New",
+          year: "2012",
+          color: "Red",
+        },
+        {
+          brand: "Tesla",
+          type: "New",
+          year: "2020",
+          color: "Silver",
+        },
+      ];
+
+      const table = document.getElementById("my-body-table");
+
+      cars.forEach((data, index) => {
+        const row = table.insertRow(index);
+        row.insertCell(0).innerHTML = data.brand;
+        row.insertCell(1).innerHTML = data.type;
+        row.insertCell(2).innerHTML = data.year;
+        row.insertCell(3).innerHTML = data.color;
+      });
+    </script>
+  </body>
+</html>

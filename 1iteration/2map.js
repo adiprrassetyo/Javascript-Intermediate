@@ -28,3 +28,12 @@
   });
   console.log(gorengMakanan);
 }
+
+{
+  fruits.map((data, i) => {
+    const row = tableContent.insertRow(i); // membuat element <tr> dengan HTML DOM Table insertRow()
+    row.insertCell(0).innerHTML = data.name; // menginput nama buah ke dalam kolom pertama dengan HTML DOM Table insertCell()
+    row.insertCell(1).innerHTML = data.color; // menginput warna buah ke dalam kolom kedua dengan HTML DOM Table insertCell()
+    row.insertCell(2).innerHTML = data.qty; // menginput total buah ke dalam kolom ketiga dengan HTML DOM Table insertCell()
+  });
+}
