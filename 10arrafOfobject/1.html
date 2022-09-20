@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="1" cellspacing="0" cellpadding="10">
+      <thead>
+        <th>Nama Buah</th>
+        <th>Warna</th>
+        <th>Total</th>
+      </thead>
+      <tbody id="fruit-table"></tbody>
+    </table>
+
+    <script>
+      const fruits = [
+        {
+          name: "strawberry",
+          color: "red",
+          qty: 5,
+        },
+        {
+          name: "blueberry",
+          color: "blue",
+          qty: 10,
+        },
+        {
+          name: "orange",
+          color: "orange",
+          qty: 5,
+        },
+        {
+          name: "grape",
+          color: "purple",
+          qty: 2,
+        },
+      ];
+      const tableContent = document.getElementById("fruit-table"); // mendapatkan element table
+
+      // menjumlahkan seluruh buah
+      const totalBuah = fruits.reduce((total, data) => {
+        return total + data.qty;
+      }, 0);
+
+      // mencetak data ke dalam table
+      fruits.map((data, i) => {
+        const row = tableContent.insertRow(i); // membuat element <tr> dengan HTML DOM Table insertRow()
+        row.insertCell(0).innerHTML = data.name; // menginput nama buah ke dalam kolom pertama dengan HTML DOM Table insertCell()
+        row.insertCell(1).innerHTML = data.color; // menginput warna buah ke dalam kolom kedua dengan HTML DOM Table insertCell()
+        row.insertCell(2).innerHTML = data.qty; // menginput total buah ke dalam kolom ketiga dengan HTML DOM Table insertCell()
+      });
+
+      // menambahkan baris terakhir untuk menjumlahkan total seluruh buah
+      const lastRow = tableContent.insertRow(tableContent.rows.length); // menambahkan row terakhir dengan metode insertRow()
+      // menggabungkan 2 kolom dengan colspan
+      const lastRowCell1 = lastRow.insertCell(0); // membuat kolom pertama
+      lastRowCell1.setAttribute("id", "lastCell"); // set attribute id pada kolom pertama
+      const td = (document.getElementById("lastCell").colSpan = "2"); // menggabungkan 2 kolom pertama
+      lastRowCell1.innerHTML = "Total"; // mengisi cell yang telah digabung dengan kata 'Total'
+
+      lastRow.insertCell(1).innerHTML = totalBuah; // mengisi kolom berikutnya dengan jumlah buah
+    </script>
+  </body>
+</html>

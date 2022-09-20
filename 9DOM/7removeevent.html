@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      id="test-event"
+      style="background-color: pink; width: 120px; height: 20px; padding: 40px"
+    >
+      Mouse Over Me!
+    </div>
+    <button onclick="removeHandler()">Remove Event</button>
+
+    <div id="mine">
+      <button onclick="removeHandler()" id="myBtn">Remove</button>
+    </div>
+
+    <p id="demo"></p>
+    <script>
+      /**
+       *! Caranya mudah, kita cukup mengganti .addEventListener() menjadi removeEventListener(). Berikut struktur kode untuk method removeEventListener():
+       *! element.removeEventListener(event, function, useCapture);
+       */
+
+      {
+        // membuat elemen button di bawah kotak pink pada kode HTML yang telah kita buat di topik sebelumnya, seperti berikut ini:
+        // <button onclick="removeHandler()">Remove Event</button>;
+      }
+
+      {
+        /**
+        **Kita akan menambahkan fungsi removeHandler() dalam file elemen.js yang telah kita buat pada topik sebelumnya, seperti berikut ini:
+
+        function removeHandler () {
+          boxPink.removeEventListener("mouseover", mouseOver); 
+          boxPink.removeEventListener("mouseout", mouseOut);
+        }
+        */
+      }
+
+      {
+        const boxPink = document.getElementById("test-event");
+
+        function mouseOver() {
+          boxPink.innerHTML = "Hai!"; // mengganti text ketika mouse diarahkan ke dalam box
+          boxPink.style.backgroundColor = "blue"; // mengganti warna background ketika mouse diarahkan ke dalam box
+        }
+
+        function mouseOut() {
+          boxPink.innerHTML = "Mouse Over Me!"; // mengganti text ketika mouse diarahkan ke luar box
+          boxPink.style.backgroundColor = "pink"; // mengganti warna background ketika mouse diarahkan ke luar box
+        }
+
+        boxPink.addEventListener("mouseover", mouseOver);
+        boxPink.addEventListener("mouseout", mouseOut);
+
+        function removeHandler() {
+          boxPink.removeEventListener("mouseover", mouseOver);
+          boxPink.removeEventListener("mouseout", mouseOut);
+        }
+      }
+
+      // Dari gambar di atas, dapat kita lihat bahwa sebelum button Remove Event di-click, kotak pink masih berubah warna latar dan teks, namun setelah button Remove Event di-click, maka kotak tidak lagi berubah warna dan teks.
+    </script>
+
+    <script>
+      document.getElementById("mine").addEventListener("mousemove", myFunction);
+
+      function myFunction() {
+        document.getElementById("demo").innerHTML = Math.random();
+      }
+
+      function removeHandler() {
+        document
+          .getElementById("mine")
+          .removeEventListener("mousemove", myFunction);
+      }
+    </script>
+  </body>
+</html>

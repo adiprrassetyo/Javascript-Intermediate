@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      id="test-event"
+      style="background-color: pink; width: 120px; height: 20px; padding: 40px"
+    >
+      Mouse Over Me!
+    </div>
+
+    <script>
+      /**
+    *!element.addEventListener(event, function, useCapture);
+    Syntax dalam menggunakan event listener adalah:
+    **element.addEventListener(event, function, useCapture);
+
+    *?event (required) adalah tipe event yang kita butuhkan seperti click, mouseover, atau HTML DOM event lainnya.
+    *?function (required) adalah fungsi yang kita panggil saat event sedang terjadi.
+    *?useCapture (optional) merupakan nilai boolean yang menentukan apakah event dieksekusi secara bubbling (*event element parent * dieksekusi setelah * event element child * dieksekusi) atau capturing (*event element child * dieksekusi setelah *event element parent * dieksekusi).
+    */
+
+      {
+        // 1.kita hendak mengganti teks dan warna background ketika mouse melakukan hover ke kotak div berwarna pink tersebut.
+
+        // 2.kode berikut ini untuk mendapatkan elemen div dengan id bernama test-event:
+
+        const boxPink = document.getElementById("test-event");
+
+        // 3.Buat fungsi untuk mengganti teks dan warna background:
+
+        function mouseOver() {
+          boxPink.innerHTML = "Hai!"; // mengganti teks ketika mouse diarahkan ke dalam box
+          boxPink.style.backgroundColor = "blue"; // mengganti warna background ketika mouse diarahkan ke dalam box
+        }
+
+        function mouseOut() {
+          boxPink.innerHTML = "Mouse Over Me!"; // mengganti teks ketika mouse diarahkan ke luar box
+          boxPink.style.backgroundColor = "pink"; // mengganti warna background ketika mouse diarahkan ke luar box
+        }
+
+        // 4.Panggil fungsi pada langkah ketiga dengan method .addEventListener()
+
+        boxPink.addEventListener("mouseover", mouseOver);
+        boxPink.addEventListener("mouseout", mouseOut);
+      }
+
+      {
+        let body = document.body;
+
+        let button = document.createElement("button");
+        body.appendChild(button);
+
+        let buttonText = document.createTextNode("Click Me");
+        button.appendChild(buttonText);
+
+        button.addEventListener("click", function () {
+          this.style.backgroundColor = "red";
+        });
+      }
+    </script>
+  </body>
+</html>
