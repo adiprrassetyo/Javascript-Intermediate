@@ -67,3 +67,21 @@
 
   messages();
 }
+
+{
+  async function handleCreateUser(req, res) {
+    try {
+      const user = await User.create({
+        username: "Sabrina",
+        password: "xxxxxx",
+      });
+      const profile = await Profile.create({
+        userId: user.id,
+        fullname: "Sabrina Kaczynski",
+      });
+      res.status(201).json(profile);
+    } catch (err) {
+      res.status(422).json(err);
+    }
+  }
+}
